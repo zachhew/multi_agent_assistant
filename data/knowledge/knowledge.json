@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Monolith vs microservices",
+    "tags": ["architecture", "backend", "microservices", "monolith"],
+    "content": "Monoliths are simpler to develop and deploy in small teams. Microservices improve isolation and independent scaling but add operational complexity."
+  },
+  {
+    "title": "FastAPI for small AI products",
+    "tags": ["fastapi", "backend", "ai", "api"],
+    "content": "FastAPI is often a strong choice for small AI products because it provides fast development, type hints, validation, and simple API design."
+  },
+  {
+    "title": "When to use multiple agents",
+    "tags": ["agents", "langgraph", "workflow", "llm"],
+    "content": "Multi-agent workflows are useful when tasks require decomposition, separate responsibilities, review loops, or structured multi-step decision-making."
+  },
+  {
+    "title": "Reviewer loop value",
+    "tags": ["review", "quality", "llm", "workflow"],
+    "content": "A reviewer loop can improve answer quality by detecting missing structure, weak reasoning, or incomplete trade-off analysis before final output."
+  },
+  {
+    "title": "Decision memo structure",
+    "tags": ["decision", "memo", "analysis", "recommendation"],
+    "content": "A strong decision memo usually contains problem statement, options, pros and cons, risks, and a final recommendation."
+  }
+]

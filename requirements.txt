@@ -4,4 +4,3 @@ pydantic
 pydantic-settings
 langchain-openai
 langgraph
-uvicorn

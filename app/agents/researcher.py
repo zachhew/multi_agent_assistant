@@ -7,40 +7,35 @@ from app.tools.structured_note_tool import build_structured_notes
 def research_topic(query: str, task_type: str | None) -> str:
     llm = get_llm()
     knowledge = local_knowledge_lookup(query)
-    structured_base = build_structured_notes(knowledge)
-    decision_frame = build_decision_frame(task_type, query)
+    note_scaffold = build_structured_notes(knowledge)
+    frame = build_decision_frame(task_type, query)
 
     prompt = f"""
-You are a research agent in a multi-agent workflow.
+You are preparing internal notes for another agent.
 
-Your job is to prepare INTERNAL RESEARCH NOTES for another agent.
+Do not write the final user-facing answer.
+Do not add fluff.
+Pull out only working material that will help produce a stronger final response.
 
-Important rules:
-- do NOT write a final answer for the user
-- do NOT write an introduction or conclusion
-- do NOT speak directly to the user
-- do NOT turn the notes into polished prose
-- extract only useful working material for the writing agent
-
-Output format:
-1. Key facts
-2. Options or approaches
-3. Pros
-4. Cons
-5. Risks
-6. Recommendation factors
+Target shape:
+- key facts
+- options
+- pros
+- cons
+- risks
+- recommendation factors
 
 Task type:
 {task_type}
 
-User request:
+Request:
 {query}
 
-Decision frame:
-{decision_frame}
+Framing:
+{frame}
 
-Structured base:
-{structured_base}
+Working scaffold:
+{note_scaffold}
 
 Local knowledge:
 {knowledge}

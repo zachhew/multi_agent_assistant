@@ -1,53 +1,49 @@
 def build_decision_frame(task_type: str | None, query: str) -> str:
     if task_type == "decision":
-        return f"""
-Decision frame:
-- Core decision to make
-- Available options
-- Main trade-offs
-- Best recommendation
-- Key risks
-- Suggested next step
-
-User request:
-{query}
-""".strip()
+        return (
+            "Think like a short internal decision memo.\n"
+            "Cover:\n"
+            "- what decision is being made\n"
+            "- realistic options\n"
+            "- trade-offs\n"
+            "- recommendation\n"
+            "- risks\n"
+            "- immediate next step\n\n"
+            f"Request: {query}"
+        )
 
     if task_type == "comparison":
-        return f"""
-Comparison frame:
-- Options being compared
-- Key dimensions of comparison
-- Strengths of each option
-- Weaknesses of each option
-- Best-fit scenario for each option
-- Balanced conclusion
-
-User request:
-{query}
-""".strip()
+        return (
+            "Think like a side-by-side comparison.\n"
+            "Cover:\n"
+            "- what is being compared\n"
+            "- comparison dimensions\n"
+            "- strengths of each side\n"
+            "- weak points of each side\n"
+            "- where each option fits better\n"
+            "- balanced final view\n\n"
+            f"Request: {query}"
+        )
 
     if task_type == "plan":
-        return f"""
-Planning frame:
-- Objective
-- Step sequence
-- Dependencies
-- Risks
-- Execution order
+        return (
+            "Think like an execution plan.\n"
+            "Cover:\n"
+            "- goal\n"
+            "- steps\n"
+            "- dependencies\n"
+            "- risks\n"
+            "- practical order of execution\n\n"
+            f"Request: {query}"
+        )
 
-User request:
-{query}
-""".strip()
-
-    return f"""
-Analysis frame:
-- Situation
-- Key observations
-- Interpretation
-- Implications
-- Practical takeaway
-
-User request:
-{query}
-""".strip()
+    return (
+        "Think like an analytical note.\n"
+        "Cover:\n"
+        "- situation\n"
+        "- observations\n"
+        "- interpretation\n"
+        "- implications\n"
+        "- practical takeaway\n\n"
+        f"Request: {query}"
+    )

@@ -5,28 +5,23 @@ def route_task(query: str) -> str:
     llm = get_llm()
 
     prompt = f"""
-You are a routing agent.
+Classify the request into one label:
 
-Classify the user request into exactly one of these task types:
-- comparison
-- decision
-- plan
-- analysis
+comparison
+decision
+plan
+analysis
 
-Rules:
-- return only one label
-- no explanation
-- no punctuation
+Return only the label.
 
-User request:
+Request:
 {query}
 """.strip()
 
     response = llm.invoke(prompt)
     task_type = response.content.strip().lower()
 
-    allowed = {"comparison", "decision", "plan", "analysis"}
-    if task_type not in allowed:
+    if task_type not in {"comparison", "decision", "plan", "analysis"}:
         return "analysis"
 
     return task_type

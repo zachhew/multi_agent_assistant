@@ -49,12 +49,19 @@ def reviewer_node(state: WorkflowState) -> WorkflowState:
     review = review_draft(
         query=state["user_query"],
         draft_answer=state["draft_answer"],
+        task_type=state["task_type"],
     )
 
     decision = review["decision"]
     feedback = review["feedback"]
+    missing_elements = review.get("missing_elements", [])
 
-    logger.info("Reviewer decision=%s | feedback=%r", decision, feedback)
+    logger.info(
+        "Reviewer decision=%s | feedback=%r | missing_elements=%s",
+        decision,
+        feedback,
+        missing_elements,
+    )
 
     if decision == "approve":
         state["final_answer"] = state["draft_answer"]
@@ -62,7 +69,11 @@ def reviewer_node(state: WorkflowState) -> WorkflowState:
         state["next_step"] = "end"
         return state
 
-    state["review_feedback"] = feedback
+    state["review_feedback"] = (
+        feedback
+        if not missing_elements
+        else f"{feedback}. Missing or weak elements: {', '.join(missing_elements)}"
+    )
     state["revision_count"] += 1
 
     if state["revision_count"] >= state["max_revisions"]:

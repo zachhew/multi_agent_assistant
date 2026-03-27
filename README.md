@@ -248,6 +248,7 @@ Compare monolith and microservices for a small AI startup.
 comparison
 
 **Что демонстрирует**:
+
 Система не выдаёт recommendation memo, а строит сравнительный ответ с trade-offs и best-fit scenarios для каждого варианта.
 
 ---
@@ -294,6 +295,7 @@ plan
 
 Пример того, что reviewer loop действительно работает.
 Ответ был отправлен на revision и затем доработан до более полного execution-oriented плана.
+
 ---
 
 ## 10. API
